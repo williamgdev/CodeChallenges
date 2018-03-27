@@ -1,18 +1,54 @@
 
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 public class main {
-    public static void main(String ... args) {
-        String[][] input = new String[][]{{"B2","E5","F6"}, {"A1","B2","C3","D4"}, {"D4","G7","I9"}, {"G7","H8"}};
+    private static final Scanner scan = new Scanner(System.in);
 
-        Map<String, String[]> output = new HashMap<>();
-        String director = findCEO(input, output);
-        long startTime = System.nanoTime();
-        String result = sumOfMultiples(3, 5, 1000) + "";
-        long endTime = System.nanoTime();
-        System.out.println(result + " with " + (endTime - startTime)/1000000 + "milliseconds");
+    public static void main(String[] args) {
+        System.out.println(timeConversion("02:05:45PM"));
+    }
 
+    static String timeConversion(String s) {
+        /*
+         * Write your code here.
+         */
+        String dayPart = s.substring(8, 10);
+        String result = s.substring(0, 8);
+        int hour = Integer.parseInt(s.substring(0, 2));
+        if (dayPart.equals("AM") && hour == 12) {
+            result = "00" + s.substring(2, 8);
+        } else if (dayPart.equals("PM") && hour != 12) {
+            hour += 12;
+            if (hour == 24) {
+                result = "12" + s.substring(2, 8);
+            } else {
+                result = hour + s.substring(2, 8);
+            }
+        }
+        return result;
+    }
+
+    static void plusMinus(int[] arr) {
+        /*
+         * Write your code here.
+         * 6
+         * 1 2 -3 4 6
+         */
+        double aux1 = 0, aux2 = 0;
+        for (int i = 0; i < arr.length; i ++) {
+            if (arr[i] == 0) {
+                aux2 ++;
+            } else if (arr[i] > 0){
+                aux1 ++;
+            }
+        }
+        DecimalFormat df = new DecimalFormat("#.######");
+        System.out.println(df.format(aux1 / arr.length));
+        System.out.println(df.format((arr.length - aux1 - aux2) / arr.length));
+        System.out.println(df.format(aux2 / arr.length));
     }
 
     private static int sumOfMultiples(int mulp1, int mulp2, int size) {

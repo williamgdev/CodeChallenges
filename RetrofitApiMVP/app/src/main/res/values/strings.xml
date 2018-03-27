@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">EarthQuake Code Test</string>
+    <string name="place">Place</string>
+    <string name="date">Date</string>
+    <string name="magnitude">Magnitude</string>
+    <string name="coordinate">Coordinate</string>
+    <string name="possible_tsunami">Possible Tsunami</string>
+    <string name="last_days_occurrences">Last Days Occurrences</string>
+</resources>

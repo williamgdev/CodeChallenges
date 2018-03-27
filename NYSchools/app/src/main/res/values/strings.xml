@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">20180208-WGT--NYCSchools</string>
+    <string name="default_school_name">School Name</string>
+    <string name="default_school_neighborhood">Neghborhood</string>
+</resources>

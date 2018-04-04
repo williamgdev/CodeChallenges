@@ -1,14 +1,88 @@
 
 import java.text.DecimalFormat;
-import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
 public class main {
     private static final Scanner scan = new Scanner(System.in);
 
+
     public static void main(String[] args) {
-        System.out.println(timeConversion("02:05:45PM"));
+
+        int[] stockPricesYesterday = new int[] {10, 7, 5, 8, 11, 9};
+
+        getMaxProfit(stockPricesYesterday);
+    }
+
+    private static void getMaxProfit(int[] stockPricesYesterday) {
+        int maxProfit = 0;
+        for (int i = 0; i < stockPricesYesterday.length; i++) {
+
+        }
+        List<? extends  main> L;
+    }
+
+    private static void makeRotattionNTimes() {
+        Scanner in = new Scanner(System.in);
+        int m = in.nextInt();
+        int n = in.nextInt();
+        int r = in.nextInt();
+        int[][] matrix = new int[m][n];
+        for(int matrix_i = 0; matrix_i < m; matrix_i++){
+            for(int matrix_j = 0; matrix_j < n; matrix_j++){
+                matrix[matrix_i][matrix_j] = in.nextInt();
+            }
+        }
+        for (int i = 0; i < r; i++) {
+            matrixRotation(matrix);
+        }
+        printArray(matrix);
+        in.close();
+    }
+// returns 6 (buying for $5 and selling for $11)
+
+    static void matrixRotation(int[][] matrix) {
+        // Complete this function
+        int col = 0, row = 0, lastRow = matrix.length - 1, lastCol = matrix[0].length - 1;
+        while (row < lastRow && col < lastCol) {
+            int first =  matrix[row][col];
+            // right
+            for (int i = col + 1; i <= lastCol; i++) {
+                matrix[row][i - 1] = matrix[row][i];
+            }
+
+            // down
+            for (int i = row; i < lastRow; i++) {
+                matrix[i][lastCol] = matrix[i + 1][lastCol];
+            }
+
+            //left
+            for (int i = lastCol; i > col; i--) {
+                matrix[lastRow][i] = matrix[lastRow][i - 1];
+            }
+
+            //up
+            for (int i = lastRow; i > row; i--) {
+                matrix[i][col] = matrix[i - 1][col];
+            }
+
+            matrix[row+1][col] = first;
+            col++;
+            row++;
+            lastCol--;
+            lastRow--;
+        }
+    }
+
+    static void printArray(int[][] array){
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[0].length; j++) {
+                System.out.print(array[i][j]);
+                System.out.print(" ");
+            }
+            System.out.println("");
+        }
     }
 
     static String timeConversion(String s) {
